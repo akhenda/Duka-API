@@ -16,7 +16,9 @@
     "start": "nodemon --exec babel-node -- index",
     "test": "export NODE_PATH=./ && mocha --compilers js:babel-register --recursive ./__tests__",
     "lint": "eslint index.js src/**/*.js __tests__/**/*.js",
-    "validate": "npm run lint && npm run test"
+    "validate": "npm run lint && npm run test",
+    "precommit": "npm run validate",
+    "prepush": "npm run validate"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -27,6 +29,7 @@
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
+    "husky": "^0.14.3",
     "mocha": "^5.0.4",
     "nodemon": "^1.17.1"
   }
