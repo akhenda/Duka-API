@@ -1,3 +1,9 @@
-const helloWorld = to => `Hello ${to}!`;
+import app from 'src/server';
 
-export default helloWorld;
+
+const isProduction = process.env.NODE_ENV === 'production';
+const port = isProduction ? process.env.PORT : 3001;
+
+app.listen(port, () => {
+  console.log(`Duka API running on port ${port}`);
+});
