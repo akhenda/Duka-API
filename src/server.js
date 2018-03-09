@@ -1,18 +1,25 @@
+// import dependencies
+import dotenv from 'dotenv';
 import express from 'express';
-import config from 'src/config/express';
 
+// import configs
+import dbConfig from 'src/config/database';
+import expressConfig from 'src/config/express';
+
+// import our routes
+import index from 'src/routes';
+import products from 'src/routes/products';
+
+dotenv.config();
 
 const app = express();
+const setups = [expressConfig, dbConfig];
+const startUp = setups.map(setup => setup(app));
 
-config(app);
-
-app.get('/', (req, res) => {
-  res.status(200).send('hello');
+const appPromise = Promise.all(startUp).then(() => {
+  app.use('/', index);
+  app.use('/products', products);
+  return app;
 });
 
-app.post('/', (req, res) => {
-  const message = `hello ${req.body.to}!`;
-  res.json({ status: 'ok', message });
-});
-
-export default app;
+export default appPromise;

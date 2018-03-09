@@ -36,3 +36,4 @@ config/runtime.yaml
 # OSX
 #
 .DS_Store
+.env
