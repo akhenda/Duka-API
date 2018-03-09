@@ -1,20 +1,18 @@
 language: node_js
 node_js:
-  - "stable" 
+  - stable 
 services: mongodb  
-cache:  
-  directories:
-    - "node_modules"
+cache:
   yarn: true
+  directories:
+    - node_modules
 install:
   - npm install -g codecov
-  - npm install -g codacy-coverage
   - npm install
 script:
   - npm test
   - codecov
-  - codacy-coverage
 deploy:
-  app: duka-api
+  app: duka
   provider: heroku
   api_key: ${HEROKU_API_KEY}

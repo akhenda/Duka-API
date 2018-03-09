@@ -14,7 +14,7 @@
   "license": "ISC",
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "export NODE_PATH=./ && nyc --reporter=lcov mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit",
+    "test": "export NODE_PATH=./ && nyc --reporter=lcov mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit && cat ./coverage/lcov.info | codacy-coverage",
     "lint": "eslint index.js src/**/*.js __tests__/**/*.js",
     "validate": "npm run lint && npm run test",
     "precommit": "npm run validate",
@@ -28,6 +28,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "codacy-coverage": "^2.1.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "^4.0.0",

@@ -1,6 +1,9 @@
 
 [![Build Status](https://travis-ci.org/akhenda/Duka-API.svg?branch=master)](https://travis-ci.org/akhenda/Duka-API)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/akhenda/Duka-API/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/akhenda/Duka-API/branch/master/graph/badge.svg)](https://codecov.io/gh/akhenda/Duka-API)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6d4457edd6ca416d89a0438175557d43)](https://www.codacy.com/app/joseph-akhenda/Duka-API?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=akhenda/Duka-API&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/6d4457edd6ca416d89a0438175557d43)](https://www.codacy.com/app/joseph-akhenda/Duka-API?utm_source=github.com&utm_medium=referral&utm_content=akhenda/Duka-API&utm_campaign=Badge_Coverage)
+[![license](https://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/akhenda/Duka-API/blob/master/LICENSE)
 
 # Duka
 Duka is a RESTful products list API built with `Express` on `NodeJS`.
