@@ -8,12 +8,10 @@ cache:
   yarn: true
 install:
   - npm install -g codecov
-  - npm install codacy-coverage --save
-  - npm install mocha-lcov-reporter --save
+  - npm install -g codacy-coverage
   - npm install
 script:
   - npm test
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
   - codecov
   - codacy-coverage
 deploy:

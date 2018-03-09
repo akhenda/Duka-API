@@ -14,7 +14,7 @@
   "license": "ISC",
   "scripts": {
     "start": "nodemon --exec babel-node -- index",
-    "test": "export NODE_PATH=./ && nyc --reporter=html mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit",
+    "test": "export NODE_PATH=./ && nyc --reporter=lcov mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit",
     "lint": "eslint index.js src/**/*.js __tests__/**/*.js",
     "validate": "npm run lint && npm run test",
     "precommit": "npm run validate",
