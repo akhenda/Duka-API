@@ -4,8 +4,8 @@ import appPromise from 'src/server';
 
 
 appPromise.then((app) => {
-  describe('API', () => {
-    it('GET / returns a welcome message', (done) => {
+  describe('Index Endpoints', () => {
+    it('GET /api/v1/ returns a welcome message', (done) => {
       request(app)
         .get('/api/v1/')
         .expect('Content-Type', /json/)
@@ -21,7 +21,7 @@ appPromise.then((app) => {
         });
     });
     
-    it('POST / returns a message', (done) => {
+    it('POST /api/v1/ returns a message', (done) => {
       request(app)
         .post('/api/v1/')
         .set('Accept', 'application/json')

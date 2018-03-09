@@ -16,11 +16,13 @@ export const findAll = (req, res) => {
     .skip(page * limit)
     .sort(querySort)
     .exec((error, products) => {
-      if (error) {
-        res.status(500).send({ message: 'Some error occurred while retrieving products.' });
-      }
-      
-      if (!products) return res.status(404).send({ message: 'Duka has no products at the moment' });
+      // if (error) {
+      //   res.status(500).send({ message: 'Some error occurred while retrieving products.' });
+      // }
+
+      // if (products.length === 0) {
+      //   return res.status(404).send({ message: 'Duka has no products at the moment' });
+      // }
 
       Product.count().exec((err, count) => {
         const pages = Math.ceil(count / limit);
@@ -40,7 +42,7 @@ export const findAll = (req, res) => {
 
 // Find a single product with a productId.
 export const findOne = (req, res) => {
-  const notFoundMsg = item => `Product not found with id ${item}`;
+  const notFoundMsg = item => `Product with id ${item} not found`;
 
   Product.findById(req.params.productId, (err, product) => {
     const { productId } = req.params;
@@ -48,10 +50,10 @@ export const findOne = (req, res) => {
     if (err) {
       if (err.kind === 'ObjectId') return res.status(404).send({ message: notFoundMsg(productId) });
 
-      return res.status(500).send({ message: `Error retrieving product with id ${productId}` });
+      // return res.status(500).send({ message: `Error retrieving product with id ${productId}` });
     } 
 
-    if (!product) return res.status(404).send({ message: notFoundMsg(productId) });
+    // if (!product) return res.status(404).send({ message: notFoundMsg(productId) });
 
     res.json({
       data: product,
@@ -79,5 +81,5 @@ export const seedProducts = (req, res) => {
   });
 
   // seeded!
-  res.json({ status: 'ok', message: 'Database seeded!' });
+  res.status(201).json({ status: 'ok', message: 'Database seeded!' });
 };

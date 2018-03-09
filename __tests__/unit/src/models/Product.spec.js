@@ -7,7 +7,7 @@ import Product from 'src/models/Product';
 
 const mockgoose = new Mockgoose(mongoose);
 
-describe('Product', () => {
+describe('Product Model', () => {
   before((done) => {
     mockgoose.prepareStorage().then(() => {
       mongoose.connect('mongodb://example.com/TestingDB', done);

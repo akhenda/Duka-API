@@ -10,7 +10,7 @@ import appPromise from 'src/server';
 const mockgoose = new Mockgoose(mongoose);
 
 appPromise.then((app) => {
-  describe('Products API', () => {
+  describe('Products Integration Tests', () => {
     before((done) => {
       mockgoose.prepareStorage().then(() => {
         mongoose.connect('mongodb://example.com/TestingDB', done);

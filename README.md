@@ -67,24 +67,33 @@ Run tests using one of the following commands:
 $ npm test
 
 > duka-api@0.0.1 test /Users/hendaz/Projects/Others/Sokowatch/challenge/server/duka
-> export NODE_PATH=./ && mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit
+> export NODE_PATH=./ && nyc --reporter=html mocha --require __tests__/setup.js --compilers js:babel-register --recursive ./__tests__ --timeout 120000 --exit
 
 
-  Product
-    ✓ should be retrieved after saved
+  Product Model
+    ✓ should be retrieved after saved (43ms)
 
-  Products API
-GET /api/v1/products/5aa19e197eb2d8affb42f448 200 9.047 ms - 370
-    ✓ GET /products/:id gives an object of the queried product, the one we will add here (41ms)
+  Products Integration Tests
+GET /api/v1/products/5aa19e197eb2d8affb42f448 200 8.778 ms - 370
+    ✓ GET /products/:id gives an object of the queried product, the one we will add here
 
-  API
-GET /api/v1/ 200 0.849 ms - 90
-    ✓ GET / returns a welcome message
-POST /api/v1/ 200 0.599 ms - 42
-    ✓ POST / returns a message
+  Index Endpoints
+GET /api/v1/ 200 0.484 ms - 90
+    ✓ GET /api/v1/ returns a welcome message
+POST /api/v1/ 200 0.658 ms - 42
+    ✓ POST /api/v1/ returns a message
+
+  Products Endpoints
+GET /api/v1/products/seed/ 201 177.959 ms - 44
+    ✓ GET /api/v1/products/seed seeds the DB with products (198ms)
+GET /api/v1/products?page=4 200 25.400 ms - -
+    ✓ GET /api/v1/products/ returns a list of products
+GET /api/v1/products/2 404 1.581 ms - 41
+    ✓ GET /api/v1/products/2 returns a 404 error
 
 
-  4 passing (1s)
+  7 passing (3s)
+
 ```
 
 
