@@ -17,8 +17,8 @@ const setups = [expressConfig, dbConfig];
 const startUp = setups.map(setup => setup(app));
 
 const appPromise = Promise.all(startUp).then(() => {
-  app.use('/', index);
-  app.use('/products', products);
+  app.use('/api/v1/', index);
+  app.use('/api/v1/products', products);
   return app;
 });
 

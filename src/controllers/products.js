@@ -53,7 +53,15 @@ export const findOne = (req, res) => {
 
     if (!product) return res.status(404).send({ message: notFoundMsg(productId) });
 
-    res.json(product);
+    res.json({
+      data: product,
+      meta: {
+        urls: {
+          self: `/api/v1/products/${product.id}`,
+          collection: '/api/v1/products',
+        },
+      },
+    });
   });
 };
 

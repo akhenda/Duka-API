@@ -7,7 +7,7 @@ appPromise.then((app) => {
   describe('API', () => {
     it('GET / returns a welcome message', (done) => {
       request(app)
-        .get('/')
+        .get('/api/v1/')
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err, res) => {
@@ -23,7 +23,7 @@ appPromise.then((app) => {
     
     it('POST / returns a message', (done) => {
       request(app)
-        .post('/')
+        .post('/api/v1/')
         .set('Accept', 'application/json')
         .send({ to: 'someone' })
         .expect('Content-Type', /json/)

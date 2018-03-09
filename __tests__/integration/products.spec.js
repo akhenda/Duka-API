@@ -31,28 +31,36 @@ appPromise.then((app) => {
         name: '5Kg Ranee Long Grain Rice',
         price: 546,
         image: 'https://example.com/image.jpg',
-        category: 'food',
+        category: 'Food',
         createdAt,
         updatedAt,
       });
 
       rice.save().then(() => {
         request(app)
-          .get('/products/5aa19e197eb2d8affb42f448')
+          .get('/api/v1/products/5aa19e197eb2d8affb42f448')
           .expect(200)
           .end((err, res) => {
             should.not.exist(err);
 
             res.body.should.eql({
-              __v: 0,
-              _id: '5aa19e197eb2d8affb42f448',
-              name: '5Kg Ranee Long Grain Rice',
-              price: 546,
-              image: 'https://example.com/image.jpg',
-              category: 'food',
-              slug: '5kg-ranee-long-grain-rice',
-              createdAt,
-              updatedAt,
+              data: {
+                _id: '5aa19e197eb2d8affb42f448',
+                name: '5Kg Ranee Long Grain Rice',
+                price: 546,
+                image: 'https://example.com/image.jpg',
+                category: 'Food',
+                createdAt,
+                updatedAt,
+                slug: '5kg-ranee-long-grain-rice',
+                __v: 0,
+              },
+              meta: {
+                urls: {
+                  self: '/api/v1/products/5aa19e197eb2d8affb42f448',
+                  collection: '/api/v1/products',
+                },
+              },
             });
 
             done();

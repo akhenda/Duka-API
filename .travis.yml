@@ -1,3 +1,22 @@
 language: node_js
 node_js:
-  - "stable"
+  - "stable" 
+services: mongodb  
+cache:  
+  directories:
+    - "node_modules"
+  yarn: true
+install:
+  - npm install -g codecov
+  - npm install codacy-coverage --save
+  - npm install mocha-lcov-reporter --save
+  - npm install
+script:
+  - npm test
+  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+  - codecov
+  - codacy-coverage
+deploy:
+  app: duka-api
+  provider: heroku
+  api_key: ${HEROKU_API_KEY}
