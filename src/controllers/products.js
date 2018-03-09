@@ -4,7 +4,7 @@ import { Product } from 'src/models';
 // Retrieve and return all products from the database.
 export const findAll = (req, res) => {
   const query = {};
-  const select = 'name image category slug';
+  const select = 'name image category price slug';
   const limit = Math.abs(req.query.limit) || 10;
   const page = (Math.abs(req.query.page) || 1) - 1;
   const querySort = req.query.sort || { name: 'asc' };
